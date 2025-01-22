@@ -6,7 +6,7 @@
 </head>
 <body>
 <div th:each="car : ${carList}">
-    <p th:text="${car.getModel()}">car</p>
+    <p th:text="|Model: ${car.getModel()}, Max Spped: ${car.getMaxSpeed()}, Color: ${car.getColor()}|"></p>
 
 </div>
 
