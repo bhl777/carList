@@ -1,6 +1,7 @@
 package web.service;
 
 import org.springframework.stereotype.Component;
+import web.dao.CarDao;
 import web.model.Car;
 
 import java.util.List;
@@ -8,17 +9,15 @@ import java.util.List;
 @Component
 public class CarServiceImpl implements CarService {
 
-    @Override
-    public List<Car> getListCar(int count, List<Car> cars) {
+    private final CarDao carDao = new CarDao();
 
-        if (count > 0 && count <5 && cars != null) {
-            return cars.subList(0, count);
+    @Override
+    public List<Car> getListCar(int count) {
+
+        if (count > 0 && count <5) {
+            return carDao.showCarList().subList(0, count);
         }
         else
-            return cars;
-
-
-
-        //return List.of();
+            return carDao.showCarList();
     }
 }
